@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+ <title>Tips</title>
+<body>
+
+<h2> Srinivas Mane shows tip amounts</h2>
+
+<p style="text-align:center;"><b>Loopings</b></p>
+    <label for="baseamount">Enter base amount </label>
+    <input type ="number" id="baseamount"  value="50"> <br>
+
+    <label for="tippercent">Enter the tip percent</label>
+    <input type ="number" id="tippercent"  value="15"> <br>
+
+    <button onclick="tips()">Show tip</button><br>
+  <div id="results">Tips are:</div>
+
+
+<script> 
+
+function tips(){
+    const baseamount=document.getElementById("baseamount").valueAsNumber;
+    const tippercent=document.getElementById("tippercent").valueAsNumber;
+    let toShow=" ";
+    for(i=0;i<5;i++){
+        const calculatedTip =(baseamount*(tippercent+(4*i)))/100;
+        toShow += `${tippercent + (4 * i)}% is ${calculatedTip.toFixed(2)};` ;
+
+    }
+    document.getElementById("results").innerHTML ="Tips are:"+toShow;
+
+}
+</script>
+<p style="text-align: center;"><b>Radio button group that switches between calculations</b></p>
+<from>
+    <label>
+        <input type="radio" name="operation" value="sum" onclick="choseOp()">Sum
+    </label><br>
+    <label>
+        <input type="radio" name="operation" value="difference" onclick="choseOp()">diff
+    </label><br>
+    <label>
+        <input type="radio" name="operation" value="product" onclick="choseOp()">mult
+    </label><br>
+    </from>
+    <div id="operationresult"></div>
+    <script>
+        function chooseOp(){
+            const baseamount=document.getElementById("baseamount").valueAsNumber;
+            const tippercent=document.getElementById("tippercent").valueAsNumber;
+            const radioButtons=document.getElementById("operation");
+            let selectedOperation;
+            for(const radioButtons of radioButtons){
+                if(radiobuttons.checked){
+                    selectedOperation=radioButtons.value;
+                    break;
+                }
+            }
+            let resultText=" ";
+            if(selectedOperation==="sum"){
+                resultText=`sum of ${baseamount} and ${tippercent} is ${baseamount+tippercent}`;
+            }
+            else if(selectedOperation==="difference"){
+                resultText=`difference of ${baseamount} and ${tippercent} is ${baseamount-tippercent}`;
+            }
+            else if(selectedOperation==="product"){
+                resultText=`product of ${baseamount} and ${tippercent} is ${baseamount*tippercent}`;  
+            }
+            document.getElementById("operationresult").innerHTML="Operation Result are:"+resultText;
+        }
+    </script>
+</from>
+
+</body>
+</html> 
