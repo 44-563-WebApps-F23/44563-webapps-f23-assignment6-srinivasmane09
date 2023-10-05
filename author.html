@@ -1,75 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>author</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  </head>
- 
+ <title> Web Apps Assignment 6 </title>
 <body>
 
-<h2>Author entry Srinivas Mane</h2>
-       <form>
-             <div class="form-group">
-              <label for="secretAuthor">The hidden author name:</label>
-             <input type="password" style="width: 200px;" class="form-control" id="secretAuthor" value="Dickens">
-      </div>
-      <div class="form-group">
-           <label for="guessAuthor">Guess the author:</label>
-           <input type="text" style="width: 200px;" class="form-control" id="guessAuthor">
-      </div>
-             <button type="button" class="btn btn-primary" id="checkButton">Check the guess</button>
-      </form>
-        <div class="mt-3">
-             <div id="score" class="alert alert-primary" style="display: none; width: 300px;"></div>
-             <div id="incorrectGuesses" class="alert alert-danger" style="display: none; width: 300px;"></div>
-         </div>
-      <script>
-          let good = 0;
-          let oops = 0;
-          let incorrectGuessCount = 0;
-          function checkAuthor() {
-                const secretAuthorInput = document.getElementById("secretAuthor");
-                const guessAuthorInput = document.getElementById("guessAuthor");
-                const resultElement = document.getElementById("score");
-                const incorrectGuessesElement = document.getElementById("incorrectGuesses");
-                const secretAuthor = secretAuthorInput.value.trim();
-                const guessAuthor = guessAuthorInput.value.trim();
-                if (secretAuthor === guessAuthor) {
-                       good++;
-                alert("You got it right!");
-                 resultElement.style.display = "block";
-                 resultElement.innerHTML = `Correct Guess! good : ${good}`;
+<h2>Author entry Akhil Reddy Depa</h2>
+
+<form id="authorForm">
+    <label for="secretAuthor">The hidden author name:</label>
+    <input type="password" id="secretAuthor" value="Dickens">
     
-                } else {
+    <label for="guessAuthor">Guess the author:</label>
+    <input type="text" id="guessAuthor">
     
-                    oops++;
+    <button type="button" onclick="checkAuthor()">Check the guess</button>
     
-                    incorrectGuessCount++;
-    
-                    incorrectGuessesElement.style.display = "block";
-    
-                    incorrectGuessesElement.innerHTML = `Incorrect Guesses: ${incorrectGuessCount}`;
-                  if (incorrectGuessCount >= 7) {
-    
-                        document.getElementById("checkButton").onclick = function () {
-    
-                            alert("Sorry, ran out of guesses.");
-    
-                        }
-    
-                    } else {
-    
-                        alert("Sorry, try again.");
-    
-                    }
-    
-                }
-}
-             document.getElementById("checkButton").onclick = checkAuthor;
-    
+    <p id="result"></p>
+
+</form>
+
+<p id="result">This text will be replaced </p>
+
+<script>
+    var good = 0;
+    var oops = 0;
+
+    function checkAuthor() {
+        const secretAuthor = document.getElementById('secretAuthor').value;
+        const guessAuthor = document.getElementById('guessAuthor').value;
+
+        if (secretAuthor === guessAuthor)
+         {
+            good++;
+            alert('You got it right!');
+        } else
+         {
+            oops++;
+            alert('Sorry');
+        }
+        document.getElementById('result').innerHTML = `right: ${good}, wrong: ${oops}`; 
+    }
+</script>
         </script>
     <div id="imageContainer">
-        <img id="displayedImage" src="cities/Arizona.jpg" alt="cities image" width="100" height="100" onclick="selectImage()">
+        <img id="displayedImage" src="cities\Austin.jpg" alt="cities image" width="100" height="100" onclick="selectImage()">
       
       </div>
       <script>
@@ -78,19 +51,19 @@
           var imageElement=document.getElementById("displayedImage");
           switch(userImage){
             case 1:
-              imageElement.src="cities/Arizona.jpg";
+              imageElement.src="cities/Austin.jpg";
               userImage=2;
               break;
               case 2:
-              imageElement.src="cities/Dallas.jpg";
+              imageElement.src="cities/Michigan.jpg";
               userImage=3;
               break;
               case 3:
-              imageElement.src="cities/new-york.jpg";
+              imageElement.src="cities/Newyork.jpg";
               userImage=1;
               break;
               default:
-              imageElement.src="cities/Arizona.jpg";
+              imageElement.src="cities/Austin.jpg";
               userImage=1;
               break;
           }
