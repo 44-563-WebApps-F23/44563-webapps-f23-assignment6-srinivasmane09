@@ -31,7 +31,44 @@ function tips(){
 
 }
 </script>
-
+<p style="text-align: center;"><b>Radio button group that switches between calculations</b></p>
+<from>
+    <label>
+        <input type="radio" name="operation" value="sum" onclick="choseOp()">Sum
+    </label><br>
+    <label>
+        <input type="radio" name="operation" value="difference" onclick="choseOp()">diff
+    </label><br>
+    <label>
+        <input type="radio" name="operation" value="product" onclick="choseOp()">mult
+    </label><br>
+    </from>
+    <div id="operationresult"></div>
+    <script>
+        function chooseOp(){
+            const baseamount=document.getElementById("baseamount").valueAsNumber;
+            const tippercent=document.getElementById("tippercent").valueAsNumber;
+            const radioButtons=document.getElementById("operation");
+            let selectedOperation;
+            for(const radioButtons of radioButtons){
+                if(radiobuttons.checked){
+                    selectedOperation=radioButtons.value;
+                    break;
+                }
+            }
+            let resultText=" ";
+            if(selectedOperation==="sum"){
+                resultText=`sum of ${baseamount} and ${tippercent} is ${baseamount+tippercent}`;
+            }
+            else if(selectedOperation==="difference"){
+                resultText=`difference of ${baseamount} and ${tippercent} is ${baseamount-tippercent}`;
+            }
+            else if(selectedOperation==="product"){
+                resultText=`product of ${baseamount} and ${tippercent} is ${baseamount*tippercent}`;  
+            }
+            document.getElementById("operationresult").innerHTML="Operation Result are:"+resultText;
+        }
+    </script>
 </from>
 
 </body>
